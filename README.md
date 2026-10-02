@@ -31,6 +31,39 @@ pip install -r requirements.txt
 
 4. Start querying the API: `http://localhost:5000` or `http://127.0.0.1:5000`
 
+## Using multiple datasets
+
+The mock API can serve a named dataset from a subdirectory inside `data/`. This allows valid, broken, mixed, or other fixtures to coexist without replacing files between runs.
+
+Each named dataset uses the same layout as the existing `data/` directory:
+
+```text
+data/
+  all-valid-data/
+    root.json
+    services/
+    organizations/
+    taxonomies/
+    taxonomy_terms/
+    service_at_locations/
+```
+
+Select a dataset when starting the app:
+
+```bash
+./app.py --dataset all-valid-data
+```
+
+Deployments that import the Flask application can use the environment variable instead:
+
+```bash
+HSDS_DATASET=all-valid-data flask --app app run
+```
+
+An explicit `--dataset` value takes precedence when `app.py` is run directly. If neither option is provided, the existing top-level `data/` layout remains the default.
+
+Dataset names are resolved under the configured `data/` root. Missing datasets and path traversal outside that root fail explicitly.
+
 ## Deploying via Docker
 
 You might want to deploy this via Docker so as to join it to the same network as other Open Referral tools such as the [ORUK Validator](https://github.com/OpenReferralUK/oruk-validator/) for testing.
