@@ -1,3 +1,7 @@
+> **KUBERA REFERENCE / UPSTREAM STUDY REPOSITORY**
+>
+> This repository is retained by `jobkubera-lab` for reference and engineering study. It is not presented as original KUBERA code. Original upstream authorship and licensing remain authoritative. Upstream: [openreferral/mock-hsds-api](https://github.com/openreferral/mock-hsds-api).
+
 HSDS Mock API
 =================
 
